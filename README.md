@@ -1,2 +1,2 @@
-# Comm-Take-Over
-The Official Comm Take Over Discord Bot Source Code
+# Networky
+The Official Networky Discord Bot Source Code
