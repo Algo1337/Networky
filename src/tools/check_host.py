@@ -35,13 +35,20 @@ class CheckHostSDK():
             return False
 
         resp = requests.get(f"{CheckHostAPI.url}{ip}&max_nodes={self.nodes}", headers={"Accept": "application/json"})
-        
         if resp.status_code != 200:
-            print(f"[ X ] Error, Something went wrong connecting to Check host's API....!")
-            return Response()
+            return ""
         
         json_data = json.loads(resp.text)
+        reqid = json_data['request_id']
 
-        for key in json_data["nodes"]:
-            val = json_data["nodes"][key]
-            print(f"{key} = {val}")
+        response = requests.get(f"https://check-host.net/check-result/{reqid}", headers={"Accept": "application/json"})
+        if response.status_code != 200:
+            return ""
+        
+        data = ""
+        ping_results = response.json()
+        for key in ping_results:
+            val = ping_results[key]
+            data += f"{key}: {val}\n";
+        
+        return data

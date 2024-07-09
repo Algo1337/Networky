@@ -8,7 +8,7 @@
 import os, discord
 
 from src.cogs import *
-from src.tools.check_host import *
+# from src.tools.check_host import *
 from src.discord_utils.messages import Message
 
 ## Temporary Config Settings
@@ -25,8 +25,8 @@ class Config:
         i = 1
         for file in files:
             if file.endswith(".py"):
-                print(f"[ + ] Command {i}/{len(files)-1}: {file.replace(".py", "")} Loaded....")
-                cmds[file.replace(".py", "")] = Library(f"src.commands.{file.replace(".py", "")}")
+                print(f"[ + ] Command {i}/{len(files)-1}: {file.replace('.py', '')} Loaded....")
+                cmds[file.replace(".py", "")] = Library(f"src.commands.{file.replace('.py', '')}")
             i+=1
 
         return cmds
@@ -46,7 +46,7 @@ class Networky(discord.Client):
         if msg_data.data.startswith(Config.prefix):
             for command in self.commands:
                 if msg_data.data.startswith(f"{Config.prefix}{command}"):
-                    print(f"[{message.author.name}] executed command -> {command}")
+                    print(f"[ + ] [{message.author.name}] executed command -> {command}")
                     cmd_test = await self.commands[command].execute_method(command, message)
                     if not cmd_test:
                         await message.channel.send("Failed to find command or corrupted Lib()")
@@ -58,29 +58,30 @@ class Networky(discord.Client):
 # search = api.TCPPing("70.70.70.72")
 intents = discord.Intents.default()
 intents.message_content = True
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 client = Networky(intents=intents, command_prefix={Config.prefix})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
