@@ -1,7 +1,5 @@
 from pydoc import resolve
 
-async def dns_resolver(message):
-    await message.channel.send("What DNS do you want to resolve?");
 
 import discord
 from discord.ext import commands
@@ -30,7 +28,7 @@ class DNSResolver(commands.Cog):
             print(f"An error occurred during DNS resolution for {hostname}: {e}")
             return [], []
 
-    @commands.command(name='dnsresolve')
+    @commands.command(name='dns_resolver')
     async def dns_resolve_command(self, ctx, hostname):
         ipv4_addresses, ipv6_addresses = await self.resolve_dns(hostname)
 
