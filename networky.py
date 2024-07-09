@@ -5,9 +5,9 @@
         @author: Algorithm, Greek
         @since: 7/2/2024
 """
-import os, discord, jishaku
-from discord.ext import commands
+import os, discord
 
+from src.cogs import *
 from src.discord_utils.messages import Message
 
 ## Temporary Config Settings
@@ -15,26 +15,22 @@ class Config:
     prefix = "+"
 
     @staticmethod
-    def get_all_commands() -> list:
-        cmds = []
-        files = os.listdir("src/commands/") # im blind... rerun
+    def load_all_cogs() -> None:
+        cmds = {}
+        files = os.listdir("src/commands/")
         if len(files) == 0:
             return cmds
-    
+
         for file in files:
             if file.endswith(".py"):
-                cmds.append(file.replace(".py", ""))
+                cmds[file.replace(".py", "")] = Library(f"src.commands.{file.replace(".py", "")}")
 
-        return cmds #im bk
+        return cmds
 
-
-class Networky(commands.Bot):
-    """ im thinking of doing it another way, for commands lol. i cant decide which is holding me up ol"""
+class Networky(discord.Client):
     async def on_ready(self):
-        await self.load_extension('jishaku')#fixed rerun.
-
         print(f"Firing up Networky Discord Bot....!", "Loading commands....!")
-        self.commands = Config.get_all_commands()
+        self.commands = Config.load_all_cogs()
 
         print("Commands loaded....!", f"Logged on as {self.user}....!")
 
@@ -47,6 +43,9 @@ class Networky(commands.Bot):
             for command in self.commands:
                 if msg_data.data.startswith(f"{Config.prefix}{command}"):
                     print(f"[{message.author.name}] executed command -> {command}")
+                    cmd_test = await self.commands[command].execute_method(command, message)
+                    if not cmd_test:
+                        await message.channel.send("Failed to find command or corrupted Lib()")
                     break
 
         print(f'Message from {message.author}: {message.content}')
