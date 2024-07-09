@@ -28,7 +28,7 @@ class DNSResolver(commands.Cog):
             print(f"An error occurred during DNS resolution for {hostname}: {e}")
             return [], []
 
-    @commands.command(name='dns_resolver')
+    @commands.command(name='DNSResolver')
     async def dns_resolver_command(self, ctx, hostname):
         ipv4_addresses, ipv6_addresses = await self.resolve_dns(hostname)
 
