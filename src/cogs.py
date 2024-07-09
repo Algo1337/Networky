@@ -23,7 +23,6 @@ class Library:
 
         for line in lib_content.split("\n"):
             if line.startswith("def"):
-                print(f"Function Found: {self.__get_method_name(line)}")
                 self.methods.append(self.__get_method_name(line));
     
     def retrieve_method(self, method_name: str):
@@ -33,7 +32,8 @@ class Library:
         return getattr(self.lib, method_name);
 
     """ Specific method for Discord.PY ONLY """
-    async def execute_method(self, method_name, discord_var) -> bool:
+    async def execute_method(self, method_name: str, discord_var) -> bool:
+        print(type(discord_var).__name__)
         if not hasattr(self, "lib"):
             print("ERROR, MISSING LIB")
             return False

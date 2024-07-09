@@ -8,13 +8,9 @@
 """
 import requests, json, enum
 
-from ..utils.net_checks import *
+from dataclasses import dataclass
 
-class Routes:
-    PING_ICMP   = 0x00001
-    PING_TCP    = 0x00002
-    HTTP_PING   = 0x00003
-    DNS_PING    = 0x00004
+from ..utils.net_checks import *
 
 class CheckHostAPI():
     url = "https://check-host.net/check-tcp?host="
@@ -49,9 +45,3 @@ class CheckHostSDK():
         for key in json_data["nodes"]:
             val = json_data["nodes"][key]
             print(f"{key} = {val}")
-
-    class Routes(enum.Enum):
-        _(JT)
-        
-api = CheckHostSDK(5)
-search = api.TCPPing("70.70.70.72")

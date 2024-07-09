@@ -8,6 +8,7 @@
 import os, discord
 
 from src.cogs import *
+from src.tools.check_host import *
 from src.discord_utils.messages import Message
 
 ## Temporary Config Settings
@@ -21,18 +22,21 @@ class Config:
         if len(files) == 0:
             return cmds
 
+        i = 1
         for file in files:
             if file.endswith(".py"):
+                print(f"[ + ] Command {i}/{len(files)-1}: {file.replace(".py", "")} Loaded....")
                 cmds[file.replace(".py", "")] = Library(f"src.commands.{file.replace(".py", "")}")
+            i+=1
 
         return cmds
 
 class Networky(discord.Client):
     async def on_ready(self):
-        print(f"Firing up Networky Discord Bot....!", "Loading commands....!")
+        print(f"[ + ] Firing up Networky Discord Bot....!\n[ + ] Loading commands....!")
         self.commands = Config.load_all_cogs()
 
-        print("Commands loaded....!", f"Logged on as {self.user}....!")
+        print(f"[ + ] Commands loaded....!\n[ + ] Logged on as {self.user}....!")
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -48,8 +52,10 @@ class Networky(discord.Client):
                         await message.channel.send("Failed to find command or corrupted Lib()")
                     break
 
-        print(f'Message from {message.author}: {message.content}')
+        print(f'[ + ] Message from {message.author}: {message.content}')
 
+# api = CheckHostSDK(5)
+# search = api.TCPPing("70.70.70.72")
 intents = discord.Intents.default()
 intents.message_content = True
 
