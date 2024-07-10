@@ -33,7 +33,6 @@ class Library:
 
     """ Specific method for Discord.PY ONLY """
     async def execute_method(self, method_name: str, discord_var) -> bool:
-        print(type(discord_var).__name__)
         if not hasattr(self, "lib"):
             print("ERROR, MISSING LIB")
             return False
