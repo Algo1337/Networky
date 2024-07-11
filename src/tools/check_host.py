@@ -6,7 +6,7 @@
     @since: 7/2/24
     @github: github.com/AdvancedAlgorithm
 """
-import requests, json, enum
+import requests, json, enum, time
 
 from dataclasses import dataclass
 
@@ -20,6 +20,12 @@ class CheckHostAPI():
         "HTTP_PING": "check-http",
         "DNS_PING": "check-dns"
     }
+    class Route:
+        NONE:       int = 0x000000
+        PING_ICMP:  int = 0x100001
+        PING_TCP:   int = 0x100002
+        HTTP_PING:  int = 0x100003
+        DNS_PING:   int = 0x100004
 
 class Response():
     pass
@@ -40,6 +46,8 @@ class CheckHostSDK():
         
         json_data = json.loads(resp.text)
         reqid = json_data['request_id']
+
+        time.sleep(1.3)
 
         response = requests.get(f"https://check-host.net/check-result/{reqid}", headers={"Accept": "application/json"})
         if response.status_code != 200:

@@ -54,8 +54,6 @@ class Networky(discord.Client):
 
         print(f'[ + ] Message from {message.author}: {message.content}')
 
-# api = CheckHostSDK(5)
-# search = api.TCPPing("70.70.70.72")
 intents = discord.Intents.default()
 intents.message_content = True
 client = Networky(intents=intents, command_prefix={Config.prefix})
