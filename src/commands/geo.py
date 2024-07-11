@@ -39,5 +39,3 @@ async def geo(message: discord.Message):
     embed.timestamp = datetime.utcnow()
     
     await message.channel.send(embed=embed)
-
-    await message.channel.send(embed=embed)
