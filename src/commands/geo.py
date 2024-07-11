@@ -11,4 +11,4 @@ async def geo(message: discord.message):
         return 
     
     resp = requests.get(f"https://ipwho.is/{msg.args[1]}")
-    await message.channel.send(resp.text)
+    await message.channel.send(resp.text) 
