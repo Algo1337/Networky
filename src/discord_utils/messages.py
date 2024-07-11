@@ -15,5 +15,5 @@ class Message():
         self.data, self.cmd   = message.content, message.content
         
         if " " in self.data:
-            args = self.data.split(" ")
-            cmd = args[0]
+            self.args = self.data.split(" ")
+            self.cmd = self.args[0]
