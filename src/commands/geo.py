@@ -1,7 +1,6 @@
 import discord
 import requests
 from discord import Embed
-from datetime import datetime
 from ..discord_utils.messages import *
 
 async def geo(message: discord.Message):
@@ -35,7 +34,5 @@ async def geo(message: discord.Message):
     
     copyright_url = "https://www.citypng.com/public/uploads/preview/hd-copyright-all-rights-reserved-red-stamp-png-11662464508s8pru5hcxm.png"
     embed.set_footer(text="Networky 2024 ©", icon_url=copyright_url)
-    
-    embed.timestamp = datetime.utcnow()
     
     await message.channel.send(embed=embed)
