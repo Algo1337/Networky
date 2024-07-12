@@ -7,18 +7,18 @@ from ..discord_utils.messages import *
 """
     Check-Host Pinging API
 """
-async def ch(message: discord.Message):
+async def ping(message: discord.Message):
     msg = Message(message)
-    if len(msg.args) < 2:
+    if len(msg.args) < 3:
         embed = Embed(title="[ X ] Error, Invalid arguments", color=discord.Color.red())
-        embed.add_field(name="Usage", value="+ch <ip>")
+        embed.add_field(name="Usage", value="+ping <ip> <nodes>")
         await message.channel.send(embed=embed)
         return 
     
     # Send a wait msg and process the data
     wait_msg = await message.channel.send("Pinging IP, Please wait.....")
 
-    api = CheckHostSDK(25)
+    api = CheckHostSDK(msg.args[2])
     search = api.TCPPing(msg.args[1])
 
     # Retrieve and delete the wait message
@@ -34,6 +34,6 @@ async def ch(message: discord.Message):
     # Construct an Embed Msg
     embed = Embed(title="TCP Ping Result", description="List of Check-Host Results", color=discord.Color.green())
     for k in search:
-        embed.add_field(name=k, value=f"Region: {search[k].COUNTRY_NAME}, {search[k].COUNTRY_STATE} | IP: {search[k].IP_ADDRESS} | MS Response: {search[k].TIME}", inline=False)
+        embed.add_field(name=f"{search[k].COUNTRY_NAME}, {search[k].COUNTRY_STATE} | {k}", value=f"IP: {search[k].IP_ADDRESS} | MS Response: {search[k].RESPONSE_TIME}", inline=False)
 
     await message.channel.send(embed=embed)

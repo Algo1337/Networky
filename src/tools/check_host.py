@@ -32,7 +32,7 @@ class PingResults():
     def __init__(self, ctry_i: str, ctry_state: str, ctry_name: str, ip_addr: str, asn: str, hostname: str):
         self.COUNTRY_INITIAL = ctry_i; self.COUNTRY_STATE = ctry_state;
         self.COUNTRY_NAME = ctry_name; self.IP_ADDRESS = ip_addr;
-        self.ASN = asn; self.HOSTNAME = hostname;
+        self.ASN = asn; self.HOSTNAME = hostname; self.RESPONSE_TIME = "N/A"
 
         
 class CheckHostSDK():
@@ -70,9 +70,11 @@ class CheckHostSDK():
         for key in ping_results:
             if isinstance(ping_results[k], list):
                 if "time" in ping_results[k][0]:
-                    results[key].TIME = ping_results[k][0]["time"]
+                    results[key].RESPONSE_TIME = ping_results[k][0]["time"]
                 else:
-                    results[key].TIME = "N/A"
+                    results[key].RESPONSE_TIME = "N/A"
+            else:
+                results[key].RESPONSE_TIME = "N/A"
             
             # results[k].RESPONSE_TIME = ping_results[k][0]
         
