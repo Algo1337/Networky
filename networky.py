@@ -7,29 +7,9 @@
 """
 import os, discord
 
+from src.cfg import *
 from src.cogs import *
-# from src.tools.check_host import *
 from src.discord_utils.messages import Message
-
-## Temporary Config Settings
-class Config:
-    prefix = "+"
-
-    @staticmethod
-    def load_all_cogs() -> None:
-        cmds = {}
-        files = os.listdir("src/commands/")
-        if len(files) == 0:
-            return cmds
-
-        i = 1
-        for file in files:
-            if file.endswith(".py"):
-                print(f"[ + ] Command {i}/{len(files)-1}: {file.replace(".py", "")} Loaded....")
-                cmds[file.replace(".py", "")] = Library(f"src.commands.{file.replace(".py", "")}")
-            i+=1
-
-        return cmds
 
 class Networky(discord.Client):
     async def on_ready(self):

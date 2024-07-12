@@ -35,7 +35,6 @@ class PingResults():
         self.ASN = asn; self.HOSTNAME = hostname;
 
         
-
 class CheckHostSDK():
     nodes:  int = 0;
     def __init__(self, max_nodes: int) -> None:
