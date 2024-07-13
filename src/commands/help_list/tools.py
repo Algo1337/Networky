@@ -1,15 +1,13 @@
 import discord
 
-from ..cfg import *
-from discord import Embed
+from discord import message
 
-async def help(message: discord.message):
-    files = os.listdir("src/commands/")
+async def tools(message: discord.message) -> bool:
+    files = os.listdir("src/commands/tools/")
     # Construct an Embed Msg
     embed = Embed(title="Help", description="List of Commands", color=discord.Color.green())
     for cmd in files:
-        if not os.path.isdir(cmd):
+        if os.path.isfile(cmd):
             embed.add_field(name=cmd, value=f"{Config.prefix}{cmd}", inline=False)
-        else: continue
 
     await message.channel.send(embed=embed)

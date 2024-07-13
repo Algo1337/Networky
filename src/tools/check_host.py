@@ -6,7 +6,7 @@
     @since: 7/2/24
     @github: github.com/AdvancedAlgorithm
 """
-import requests, json, enum, time
+import requests, json, time
 
 from dataclasses import dataclass
 
@@ -75,7 +75,5 @@ class CheckHostSDK():
                     results[key].RESPONSE_TIME = "N/A"
             else:
                 results[key].RESPONSE_TIME = "N/A"
-            
-            # results[k].RESPONSE_TIME = ping_results[k][0]
         
         return results
