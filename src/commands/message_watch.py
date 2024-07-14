@@ -12,8 +12,8 @@ async def message_watch(message: discord.message) -> bool:
         if validate_ipv4_format(element):
             await geo(message, element)
 
-        if validators.url(element):
-            await resolve_url(message, element)
+        # if validators.url(element):
+        #     await resolve_url(message, element)
 
     # await message.channel.send("TEST")
 
@@ -40,9 +40,9 @@ async def geo(message: discord.message, element: str):
 
     await message.channel.send(embed=embed)
 
-async def resolve_url(message: discord.message, element: str):
-    msg = Message(message)
+# async def resolve_url(message: discord.message, element: str):
+#     msg = Message(message)
 
-    resp = subprocess.getoutput(f"nslookup {element}; host {element};  dig -x {element}")
-    await message.channel.send(f"The previous messaged contained a URL: {element}\n\n```{resp}```")
+#     resp = subprocess.getoutput(f"nslookup {element}; host {element};  dig -x {element}")
+#     await message.channel.send(f"The previous messaged contained a URL: {element}\n\n```{resp}```")
     
