@@ -14,8 +14,8 @@ class Config:
         i = 1
         for file in files:
             if file.endswith(".py"):
-                print(f"[ + ] Command {i}/{len(files)-1}: {file.replace(".py", "")} Loaded....")
-                cmds[file.replace(".py", "")] = Library(f"src.commands.{file.replace(".py", "")}")
+                print(f'[ + ] Command {i}/{len(files)-1}: {file.replace(".py", "")} Loaded....')
+                cmds[file.replace(".py", "")] = Library(f'src.commands.{file.replace(".py", "")}')
             i+=1
 
         return cmds

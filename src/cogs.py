@@ -7,32 +7,37 @@ class DiscordCogs():
     commands:   dict[str] = {};
     def __init__(self, cmd_dir: str):
         self.dir = cmd_dir;
+        self.module_link = self.dir.replace("/", ".").replace("\\", ".")
     
         self._loadCmds();
+
+        if not self.LoadMessageModerator():
+            print("[ x ] No message_watch found....!")
 
     def _loadCmds(self, path: str = "") -> None:
         i = 0
 
-        current_dir = self.dir
-        module_link = self.dir.replace("/", ".").replace("\\", ".")
-
-        root_dir = os.listdir(current_dir)
+        root_dir = os.listdir(self.dir)
+        total_count = len(root_dir)
         for item in root_dir:
-            if item == "__pycache__": continue
-            if os.path.isdir(current_dir + item):
-                next_dir = os.listdir(current_dir + item)
+            if item == "__pycache__" or item == "message_watch": continue
+            if os.path.isdir(self.dir + item):
+                next_dir = os.listdir(self.dir + item)
+                total_count += len(next_dir)
                 for nitem in next_dir:
                     if nitem == "__pycache__": continue
-                    print(f"[ NEW ] [DIR] {current_dir}{item}/{nitem} | Module Link: {module_link}{item}.{nitem}")
-                    # print(f"[ + ] [NEW] Command: {item}/{nitem.replace(".py", "")} Loaded....")
-                    self.commands[f'{nitem.replace(".py", "")}'] = Library(f'{module_link}{item}.{nitem.replace(".py", "")}')
+                    print(f"[ NEW ] [DIR] {i}/{total_count} {self.dir}{item}/{nitem} | Module Link: {self.module_link}{item}.{nitem}")
+                    self.commands[f'{nitem.replace(".py", "")}'] = Library(f'{self.module_link}{item}.{nitem.replace(".py", "")}')
+
+                    i += 1
                 continue
 
             
             if not os.path.isdir(item):
-                print(f"[ NEW ] [ROOT] {current_dir}{item} | Module Link: {module_link}{item}")
-                # print(f"[ + ] [NEW] Command: {item.replace(".py", "")} Loaded....")
-                self.commands[item.replace(".py", "")] = Library(f'{module_link}{item.replace(".py", "")}')
+                print(f"[ NEW ] [ROOT]  {i}/{total_count} {self.dir}{item} | Module Link: {self.module_link}{item}")
+                self.commands[item.replace(".py", "")] = Library(f'{self.module_link}{item.replace(".py", "")}')
+            
+            i += 1
 
             
     """
@@ -42,7 +47,8 @@ class DiscordCogs():
         if not os.path.exists(f'{self.dir}message_watch.py'):
             return False; 
     
-        self.commands["message_watch"] = Library(f'{self.dir}message_watch')
+        self.commands["message_watch"] = Library(f'{self.module_link}message_watch')
+        return True
 
     """
         Search for cmd and execute if found like cogs do for you alrdy
@@ -112,6 +118,3 @@ class Library:
             name += chr;
 
         return name;
-
-
-# DiscordCogs("src/commands/")

@@ -5,40 +5,31 @@
         @author: Algorithm, Greek
         @since: 7/2/2024
 """
-import os, discord
+import discord
 
 from src.cfg import *
 from src.cogs import *
 
 from src.discord_utils.messages import Message
 
-class Networky(discord.Client):
+class Networky(discord.Client, DiscordCogs):
     async def on_ready(self):
-        global c
         print(f"[ + ] Firing up Networky Discord Bot....!\n[ + ] Loading commands....!")
-        self.commands = c.commands
         print(f"[ + ] Commands loaded....!\n[ + ] Logged on as {self.user}....!")
 
     async def on_message(self, message):
-        global c
         if message.author == self.user:
             return
             
         msg_data = Message(message)
+        if "message_watch" in self.commands:
+            await self.ExecuteCmd("message_watch", message)
+
         if not msg_data.data.startswith(Config.prefix):
             return
         
-        t = await c.ExecuteCmd(msg_data.args[0].replace(Config.prefix, ""), message)
-        if not t:
-            print("ERROR")
-         
-        # for command in self.commands:
-        #     if msg_data.data.startswith(f"{Config.prefix}{command}"):
-        #         print(f"[ + ] [{message.author.name}] executed command -> {command}")
-        #         cmd_test = await self.commands[command].execute_method(command, message)
-        #         if not cmd_test:
-        #             await message.channel.send("Failed to find command or corrupted Lib()")
-        #         break
+        if not await self.ExecuteCmd(msg_data.args[0].replace(Config.prefix, ""), message):
+            return await message.channel.send("Failed to find command or corrupted Lib()")
 
         print(f'[ + ] Message from {message.author}: {message.content}')
 
