@@ -2,6 +2,8 @@ import os, importlib, discord
 
 from discord import message
 
+DEFAULT_MESSAGE_MODERATOR = "message_watch.py"
+
 class DiscordCogs():
     cmd_paths:  list[str] = [];
     commands:   dict[str] = {};

@@ -21,7 +21,7 @@ async def geo(message: discord.message, element: str):
     msg = Message(message)
     req = requests.get(f"https://ipwho.is/{element}")
     if req.status_code != 200:
-        return (await message.channel.send("Err Connecting to API"))
+        return (await message.channel.send("[ X ] Error Connecting to API"))
     
     resp = req.json()
 
