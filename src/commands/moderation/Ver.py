@@ -1,7 +1,7 @@
 import discord
 
 from discord import Embed
-from ...discord_utils.messages import *
+from ...utils.discord.messages import *
 
 
 async def ver(message: discord.message):

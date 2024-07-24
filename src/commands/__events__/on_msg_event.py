@@ -2,10 +2,10 @@ import discord, requests, validators, subprocess
 
 from discord import message, Embed
 
-from ..discord_utils.messages import *
-from ..utils.net_checks import *
+from ...utils.discord.messages import *
+from ...utils.net_checks import *
 
-async def message_watch(message: discord.message) -> bool:
+async def on_msg_event(message: discord.message) -> bool:
     msg = Message(message)
 
     for element in msg.args:

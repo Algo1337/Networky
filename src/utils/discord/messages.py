@@ -10,10 +10,14 @@ class MsgInfo():
 
 class Message():
     info:   MsgInfo;
-    def __init__(self, message):
+    def __init__(self, message: discord.message):
         self.info   = MsgInfo()
         self.data, self.cmd, self.args = message.content, message.content, [message.content]
         
         if " " in self.data:
             self.args = self.data.split(" ")
             self.cmd = self.args[0]
+
+    @staticmethod
+    def embedMsg(t: str, desc: str, fields: dict[str, str]) -> bool:
+        pass

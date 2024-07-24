@@ -4,13 +4,17 @@ from ..cfg import *
 from discord import Embed
 
 async def help(message: discord.message):
-    files = os.listdir("src/commands/")
+    walk = os.walk("src/commands/")
+
     # Construct an Embed Msg
     embed = Embed(title="Help", description="List of Commands", color=discord.Color.green())
-    for cmd in files:
-        if cmd == "__pycache__" or cmd == DEFAULT_MESSAGE_MODERATOR: continue
-        if not os.path.isdir(cmd):
-            embed.add_field(name=cmd.replace(".py", ""), value=f'{Config.prefix}{cmd.replace(".py", "")}', inline=False)
-        else: continue
+    
+    for root,dirs,files in walk:
+        if "__pycache__" in root: continue # ignore __pycache__ and 
+        for cmd in files:
+            if cmd.startswith("."): continue # ignore dot files
+            if cmd == DEFAULT_MESSAGE_MODERATOR: continue # ignore this specific file
+            cmd = cmd.replace(".py", "")
+            embed.add_field(name=cmd, value=f'{Config.prefix}{cmd}', inline=False)
 
     await message.channel.send(embed=embed)

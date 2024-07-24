@@ -1,7 +1,7 @@
 import discord
 
 from discord import guild
-from ...discord_utils.messages import *
+from ...utils.discord.messages import *
 
 async def nuke(message: discord.message):
     channel = message.channel

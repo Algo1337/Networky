@@ -2,9 +2,28 @@ import os, importlib, discord
 
 from discord import message
 
-DEFAULT_MESSAGE_MODERATOR = "message_watch.py"
+DEFAULT_MESSAGE_MODERATOR = "__events__"
+
+"""
+    Example Tree Of the Command Directory 
+
+    - __events__ Directory is ignored while scanning for commands!
+
+    - __events__/
+        | - on_message_event.py
+        | - on_join_event.py
+        | - on_vc_event.py
+    - help_cmds/
+        | - help.py
+        | - server.py
+        | - tools.py
+    - tools/
+        | - geo.py
+        | - pscan.py
+"""
 
 class DiscordCogs():
+    
     cmd_paths:  list[str] = [];
     commands:   dict[str] = {};
     def __init__(self, cmd_dir: str):
@@ -22,7 +41,7 @@ class DiscordCogs():
         root_dir = os.listdir(self.dir)
         total_count = len(root_dir)
         for item in root_dir:
-            if item == "__pycache__" or item == "message_watch": continue
+            if item == "__pycache__" or item == DEFAULT_MESSAGE_MODERATOR: continue
             if os.path.isdir(self.dir + item):
                 next_dir = os.listdir(self.dir + item)
                 total_count += len(next_dir)
@@ -41,15 +60,24 @@ class DiscordCogs():
             
             i += 1
 
-            
     """
-        User must have 'message_watch.py' in the command root directory
+        User must have 'on_msg_event.py' in the moderation directory within the command dir
     """
     def LoadMessageModerator(self) -> bool:
-        if not os.path.exists(f'{self.dir}message_watch.py'):
+        if not os.path.exists(f'{self.dir}modertion/on_msg_event.py'):
             return False; 
     
-        self.commands["message_watch"] = Library(f'{self.module_link}message_watch')
+        self.commands["on_msg_event"] = Library(f'{self.module_link}moderation.on_msg_event')
+        return True
+    
+    """
+        User must have 'on_vc_event.py' in the moderation directory within the command dir
+    """
+    def LoadVCModeration(self) -> bool:
+        if not os.path.exists(f'{self.dir}moderation/on_vc_event.py'):
+            return False
+        
+        self.commands["on_vc_event"] = Library(f'{self.module_link}moderation.on_vc_event')
         return True
 
     """
