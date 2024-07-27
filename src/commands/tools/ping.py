@@ -4,7 +4,7 @@ from discord import Embed
 # from ...tools.check_host import *
 
 from src.tools.check_host import *
-from ...discord_utils.messages import *
+from ...utils.discord.messages import *
 
 """
     Check-Host Pinging API

@@ -1,6 +1,6 @@
 import discord, subprocess, validators
 
-from ...discord_utils.messages import *
+from ...utils.discord.messages import *
 
 async def nmap(message: discord.message) -> bool:
     msg = Message(message)

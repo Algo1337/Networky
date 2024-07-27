@@ -64,20 +64,20 @@ class DiscordCogs():
         User must have 'on_msg_event.py' in the moderation directory within the command dir
     """
     def LoadMessageModerator(self) -> bool:
-        if not os.path.exists(f'{self.dir}modertion/on_msg_event.py'):
+        if not os.path.exists(f'{self.dir}__events__/on_msg_event.py'):
             return False; 
     
-        self.commands["on_msg_event"] = Library(f'{self.module_link}moderation.on_msg_event')
+        self.commands["on_msg_event"] = Library(f'{self.module_link}__events__.on_msg_event')
         return True
     
     """
         User must have 'on_vc_event.py' in the moderation directory within the command dir
     """
     def LoadVCModeration(self) -> bool:
-        if not os.path.exists(f'{self.dir}moderation/on_vc_event.py'):
+        if not os.path.exists(f'{self.dir}__events__/on_vc_event.py'):
             return False
         
-        self.commands["on_vc_event"] = Library(f'{self.module_link}moderation.on_vc_event')
+        self.commands["on_vc_event"] = Library(f'{self.module_link}__events__.on_vc_event')
         return True
 
     """
