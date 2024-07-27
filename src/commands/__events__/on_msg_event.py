@@ -41,5 +41,5 @@ async def geo(message: discord.message, element: str):
 
 async def resolve_url(message: discord.message, element: str):
     resp = subprocess.getoutput(f"nslookup {element}; host {element};  dig -x {element}")
-    await message.channel.send(f"The previous messaged contained a URL: {element}\n\n```{resp}```")
+    await message.channel.send(f"The previous messaged contained a URL: {element}\n\n```{resp}```\n\n")
     

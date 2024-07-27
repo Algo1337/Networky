@@ -1,8 +1,6 @@
-import os, importlib, discord
+import os, importlib, discord, time, threading
 
-from discord import message
-
-DEFAULT_MESSAGE_MODERATOR = "__events__"
+__EVENTS_METHODS__ = ["__events__", "on_msg_event.py", "on_vc_event.py"]
 
 """
     Example Tree Of the Command Directory 
@@ -35,13 +33,15 @@ class DiscordCogs():
         if not self.LoadMessageModerator():
             print("[ x ] No message_watch found....!")
 
+        threading.Thread(target=self._DetectChanges).start()
+
     def _loadCmds(self, path: str = "") -> None:
         i = 0
 
         root_dir = os.listdir(self.dir)
         total_count = len(root_dir)
         for item in root_dir:
-            if item == "__pycache__" or item == DEFAULT_MESSAGE_MODERATOR: continue
+            if item == "__pycache__" or item in __EVENTS_METHODS__: continue
             if os.path.isdir(self.dir + item):
                 next_dir = os.listdir(self.dir + item)
                 total_count += len(next_dir)
@@ -93,6 +93,16 @@ class DiscordCogs():
             return True
             
         return False
+    
+    def _DetectChanges(self) -> None:
+        print("[ + ] Detecting commands for new changes for runtime reloading....")
+        while True:
+            for cmd in self.commands:
+                if self.commands[cmd].lib_sz != os.stat(self.commands[cmd].lib_path):
+                    self.commands[cmd].reloadCmd()
+                    print(f"[ + ] Command: {self.commands[cmd].lib_path} reloaded....!")
+
+            time.sleep(1)
 
 class Library:
     lib:        None;
@@ -104,6 +114,8 @@ class Library:
             print("ERROR, MISSING LIB " + self.path);
             return
         
+        self.lib_path = lpath.replace(".", "/") + ".py";
+        self.lib_sz = os.stat(self.lib_path)
         self.path = lpath;
         self._loadLib();
 
@@ -119,6 +131,9 @@ class Library:
             if line.startswith("def"):
                 self.methods.append(self.__get_method_name(line));
     
+    """
+        Get method from module/lib
+    """
     def retrieve_method(self, method_name: str):
         if not hasattr(self.lib, method_name):
             return None;
@@ -138,7 +153,7 @@ class Library:
         method = getattr(self.lib, method_name);
         await method(discord_var);
         return True;
-                
+
     def __get_method_name(self, line: str) -> str:
         name = "";
         for chr in line.split(" ")[1]:
@@ -148,3 +163,10 @@ class Library:
             name += chr;
 
         return name;
+
+    """
+        Reload the command/module
+    """
+    def reloadCmd(self) -> None:
+        self.lib_sz = os.stat(self.lib_path)
+        importlib.reload(self.lib)

@@ -1,4 +1,4 @@
-import discord
+import discord, asyncio
 
 async def vc(message: discord.message) -> bool:
     if not message.author.voice:
@@ -7,8 +7,11 @@ async def vc(message: discord.message) -> bool:
     channel = message.author.voice.channel
     
     vc = await channel.connect()
-    await message.channel.send(f"Joined {channel}")
 
-    latency = vc.latency
-    await message.channel.send(f"VC Latency: {latency * 1000:.2f}ms")  # Convert to milliseconds for better readability
+    start_time = asyncio.get_event_loop().time()
+    await asyncio.sleep(1)
+    end_time = asyncio.get_event_loop().time()
+
+    latency = (end_time - start_time) * 1000
+    await message.channel.send(f"Joined VC | Latency: {latency}ms")  # Convert to milliseconds for better readability
     return True

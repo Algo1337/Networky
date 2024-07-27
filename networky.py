@@ -5,12 +5,12 @@
         @author: Algorithm
         @since: 7/2/2024
 """
-import discord, asyncio
+import discord, asyncio, threading
 
 from src.cfg import *
 from src.cogs import *
 
-from utils.discord.messages import Message
+from src.utils.discord.messages import Message
 
 class Networky(discord.Client, DiscordCogs):
     async def on_ready(self):
@@ -19,8 +19,6 @@ class Networky(discord.Client, DiscordCogs):
 
         print(f"[ + ] Firing up Networky Discord Bot....!\n[ + ] Loading commands....!")
         print(f"[ + ] Commands loaded....!\n[ + ] Logged on as {self.user}....!")
-        self.latency_threshold = 0.02
-        self.latency_task = asyncio.create_task(self.check_latency())
 
     async def on_message(self, message):
         if message.author == self.user:
@@ -47,24 +45,10 @@ class Networky(discord.Client, DiscordCogs):
             elif before.channel:
                 print(f'{member} left voice channel {before.channel.name}.')
 
-    async def check_latency(self):
-        while not self.is_closed():
-            current_latency = self.latency
-            if current_latency < self.latency_threshold:
-                print(f"Latency is low: {current_latency} seconds.")
-                # Perform actions when latency is low
-                # Example: Send a message to a specific channel
-                channel = self.get_channel("1235776145819959318")  # Replace with your channel ID
-                if channel:
-                    await channel.send(f"Latency is low: {current_latency} seconds.")
-                
-                print(f"Latency: {current_latency} seconds.")
-            
-            await asyncio.sleep(60)  # Check every 60 seconds
-
 c = DiscordCogs("src/commands/")
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 client = Networky(intents=intents, command_prefix={Config.prefix})
 
 
