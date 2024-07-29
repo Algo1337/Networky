@@ -11,6 +11,6 @@ async def kick(message: discord.message) -> bool:
                 await message.channel.send(f"User Kicked <@{msg.args[1]}>")
                 return await member.kick()
 
-        await message.channel.send("[ X ] Unable to find user....!")
+        await message.channel.send("[ X ]  Unable to find user....!")
 
         return True

@@ -1,6 +1,6 @@
 import os, importlib, discord, time, threading
 
-__EVENTS_METHODS__ = ["__events__", "on_msg_event.py", "on_vc_event.py"]
+__EVENTS_METHODS__ = ["__events__", "on_msg_event", "on_msg_event.py", "on_vc_event", "on_vc_event.py"]
 
 """
     Example Tree Of the Command Directory 
@@ -41,7 +41,7 @@ class DiscordCogs():
         root_dir = os.listdir(self.dir)
         total_count = len(root_dir)
         for item in root_dir:
-            if item == "__pycache__" or item in __EVENTS_METHODS__: continue
+            if item == "__pycache__": continue
             if os.path.isdir(self.dir + item):
                 next_dir = os.listdir(self.dir + item)
                 total_count += len(next_dir)
@@ -79,6 +79,18 @@ class DiscordCogs():
         
         self.commands["on_vc_event"] = Library(f'{self.module_link}__events__.on_vc_event')
         return True
+    
+    async def ExecuteMsgModerator(self, event_name: str, message: discord.message) -> bool:
+        if not event_name in __EVENTS_METHODS__: return False
+        method = getattr(self.commands[event_name].lib, "on_msg_event")
+        await method(message)
+        return True
+    
+    async def ExecuteVcModerator(self, event_name: str, member, before, after) -> bool:
+        if not event_name in __EVENTS_METHODS__: return False
+        method = getattr(self.commands[event_name].lib, "on_vc_event")
+        await method(member, before, after)
+        return False
 
     """
         Search for cmd and execute if found like cogs do for you alrdy
@@ -88,6 +100,7 @@ class DiscordCogs():
             await message.channel.send("[ X ] Command was not found!")
     """
     async def ExecuteCmd(self, cmd_used: str, message: discord.message) -> bool:
+        if cmd_used in __EVENTS_METHODS__: return False
         if cmd_used in self.commands:
             await self.commands[cmd_used].execute_method(cmd_used, message)
             return True

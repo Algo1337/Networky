@@ -9,7 +9,7 @@ async def tools(message: discord.message) -> bool:
     # Construct an Embed Msg
     embed = Embed(title="Help", description="List of Commands", color=discord.Color.green())
     for cmd in files:
-        if cmd == "__pycache__" or cmd == DEFAULT_MESSAGE_MODERATOR: continue
+        if cmd == "__pycache__" or cmd == __EVENTS_METHODS__: continue
         embed.add_field(name=cmd, value=f"{Config.prefix}{cmd}", inline=False)
 
     await message.channel.send(embed=embed)

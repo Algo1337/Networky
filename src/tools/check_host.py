@@ -59,7 +59,7 @@ class CheckHostSDK():
             )
 
         reqid = json_data['request_id']
-        time.sleep(1.3)
+        time.sleep(1.5)
 
         response = requests.get(f"https://check-host.net/check-result/{reqid}", headers={"Accept": "application/json"})
         if response.status_code != 200:

@@ -26,7 +26,7 @@ class Networky(discord.Client, DiscordCogs):
             
         msg_data = Message(message)
         if "on_msg_event" in self.commands:
-            await self.ExecuteCmd("on_msg_event", message)
+            await self.ExecuteMsgModerator("on_msg_event", message)
 
         if not msg_data.data.startswith(Config.prefix):
             return
@@ -37,13 +37,8 @@ class Networky(discord.Client, DiscordCogs):
         print(f'[ + ] Message from {message.author}: {message.content}')
     
     async def on_voice_state_update(self, member, before, after):
-        # This event is triggered whenever a member's voice state changes (e.g., joining, leaving, moving channels)
-        if before.channel != after.channel:
-            # Check if the member joined or left a voice channel
-            if after.channel:
-                print(f'{member} joined voice channel {after.channel.name}.')
-            elif before.channel:
-                print(f'{member} left voice channel {before.channel.name}.')
+        # self.ExecuteVcModerator(before, after)
+        pass
 
 c = DiscordCogs("src/commands/")
 intents = discord.Intents.default()

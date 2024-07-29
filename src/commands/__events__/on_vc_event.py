@@ -1,6 +1,6 @@
 import discord
 
-async def on_voice_state_update(self, member, before, after):
+async def on_voice_state_update(before, after):
     if before.channel != after.channel:  # Check if there was a change in voice channel
         if after.channel is None:  # User left a voice channel
             print(f'{member.display_name} left voice channel {before.channel.name}')
