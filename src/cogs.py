@@ -107,6 +107,15 @@ class DiscordCogs():
             
         return False
     
+    async def ExcuteTestCmd(self, message: discord.message):
+        if "test" not in self.commands:
+            self.commands["test"] = Library(f"{self.module_link}test")
+
+        method = getattr(self.commands["test"].lib, "test");
+        await method(message, self);
+        return True;
+
+    
     def _DetectChanges(self) -> None:
         print("[ + ] Detecting commands for new changes for runtime reloading....")
         while True:

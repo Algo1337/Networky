@@ -31,10 +31,11 @@ class Networky(discord.Client, DiscordCogs):
         if not msg_data.data.startswith(Config.prefix):
             return
         
+        if msg_data.cmd == "+test":
+            return await self.ExcuteTestCmd(message)
+        
         if not await self.ExecuteCmd(msg_data.args[0].replace(Config.prefix, ""), message):
             return await message.channel.send("Failed to find command or corrupted Lib()")
-
-        print(f'[ + ] Message from {message.author}: {message.content}')
     
     async def on_voice_state_update(self, member, before, after):
         # self.ExecuteVcModerator(before, after)
