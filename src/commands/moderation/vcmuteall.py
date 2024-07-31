@@ -1,14 +1,29 @@
 import discord
 
-async def vcmuteall(message: discord.message):
-    if not message.author.guild_permissions.administrator:
-        return await message.channel.send("You do not have permission to manage roles.")
+async def vcmuteall(ctx):
+    if not ctx.author.guild_permissions.administrator:
+        embed = discord.Embed(
+            title="Permission Denied 🚫",
+            description="You do not have permission to manage roles 🚫.",
+            color=discord.Color.red()
+        )
+        return await ctx.send(embed=embed)
     
-    if not message.author.voice:
-        return await message.channel.send("You are not connected to a voice channel.")
+    if not ctx.author.voice:
+        embed = discord.Embed(
+            title="Not Connected ⚠️!",
+            description="You are not connected to a voice channel ⚠️!",
+            color=discord.Color.red()
+        )
+        return await ctx.send(embed=embed)
     
-    voice_channel = message.author.voice.channel
+    voice_channel = ctx.author.voice.channel
 
     for member in voice_channel.members:
         await member.edit(mute=True)
-        await message.channel.send(f"{member.display_name} has been server muted.")
+        embed = discord.Embed(
+            title="User Muted 🔈",
+            description=f"{member.display_name} has been server muted ⚙️.",
+            color=discord.Color.green()
+        )
+        await ctx.send(embed=embed)
