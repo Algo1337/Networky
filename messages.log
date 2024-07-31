@@ -1,0 +1,324 @@
+[07-30-2024 19:07:10] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbedMsg(message, "EmbedTitle", "EmbedDescription", {"Field 1":"Desc", "Field 2":"Desc"})
+```
+[07-30-2024 19:08:00] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await Message.SendEmbedMsg(message, "EmbedTitle", "EmbedDescription", {"Field 1":"Desc", "Field 2":"Desc"})
+```
+[07-30-2024 19:08:25] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await Message.SendEmbedMsg(message, "EmbedTitle", "EmbedDescription", {"Field 1":"Desc", "Field 2":"Desc"})
+```
+[07-30-2024 19:08:52] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await Message.SendEmbedMsg(message, 'EmbedTitle', 'EmbedDescription', {'Field 1':'Desc', 'Field 2':'Desc'})
+```
+[07-30-2024 19:08:53] MESSAGE :: Networky:chat => Still waiting for my WiFi
+[07-30-2024 19:09:15] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await Message.SendEmbedMsg(message, 'EmbedTitle', 'EmbedDescription', {'Field 1':'Desc', 'Field 2':'Desc'})
+```
+[07-30-2024 19:09:19] COMMAND :: 127.0.0.1:off-topic => +purge 10
+[07-30-2024 19:09:35] COMMAND :: Networky:development => +test gay.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def gay(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbdedMsg(message, "TEST", "TEST", {"TEST":"GAY"})
+```
+[07-30-2024 19:09:46] COMMAND :: Networky:development => +test gay.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def gay(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbedMsg(message, "TEST", "TEST", {"TEST":"GAY"})
+```
+[07-30-2024 19:09:48] COMMAND :: Networky:development => +gay
+[07-30-2024 19:10:29] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbdedMsg(message, "Cant Beat This Bot", "bot2good", {"Field 1":"Desc","Field 2":"Desc"})
+```
+[07-30-2024 19:10:44] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbdedMsg(message, "Cant Beat This Bot", "bot2good", {"Field 1":"Desc", "Field 2":"Desc"})
+```
+[07-30-2024 19:10:58] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beatme(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbdedMsg(message, "Cant Beat This Bot", "bot2good", {"Field 1":"Desc", "Field 2":"Desc"})
+```
+[07-30-2024 19:11:04] COMMAND :: 127.0.0.1:off-topic => +purge 4
+[07-30-2024 19:11:21] COMMAND :: Networky:development => +test gg.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def gay(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbedMsg(message, "TEST", "TEST", {"TEST":"GAY"})
+```
+[07-30-2024 19:11:29] COMMAND :: 127.0.0.1:off-topic => +test gay.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def gay(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbedMsg(message, "TEST", "TEST", {"TEST":"GAY"})
+```
+[07-30-2024 19:12:35] COMMAND :: 127.0.0.1:off-topic => +test gay.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def gay(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbedMsg(message, "TEST", "TEST", {"TEST":"GAY"})
+```
+[07-30-2024 19:12:41] COMMAND :: 127.0.0.1:off-topic => +purge 2
+[07-30-2024 19:12:50] COMMAND :: Networky:chat => +test gg.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def gay(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbedMsg(message, "TEST", "TEST", {"TEST":"GAY"})
+```
+[07-30-2024 19:13:20] COMMAND :: Networky:chat => +test gg.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def gay(message: discord.message) -> bool:
+  msg = Message(message)
+
+  await msg.SendEmbedMsg(message, "TEST", "TEST", {"TEST":"GAY", "G": "E"})
+```
+[07-30-2024 19:14:11] COMMAND :: Networky:chat => +test beep.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beep(message: discord.message):
+  await message.channel.send(message.content)```
+[07-30-2024 19:14:15] COMMAND :: Networky:chat => +beep
+[07-30-2024 19:15:50] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+async def beatme(message: discord.message):
+  await message.channel.send("YOU CANT BEAT THIS BOT KEEEED")
+```
+[07-30-2024 19:16:03] COMMAND :: 127.0.0.1:off-topic => +test beatme.py
+
+```import discord
+
+async def beatme(message: discord.message):
+  await message.channel.send("YOU CANT BEAT THIS BOT KEEEED")
+```
+[07-30-2024 19:16:28] MESSAGE :: 127.0.0.1:off-topic => ............
+[07-30-2024 19:16:53] COMMAND :: 127.0.0.1:off-topic => +test beep.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beep(message: discord.message):
+  await message.channel.send(message.content)```
+[07-30-2024 19:17:07] COMMAND :: 127.0.0.1:off-topic => +purge 3
+[07-30-2024 19:17:11] COMMAND :: 127.0.0.1:off-topic => +purge 2
+[07-30-2024 19:17:24] MESSAGE :: 127.0.0.1:off-topic => <@1131407212061921320>
+[07-30-2024 19:17:25] MESSAGE :: 127.0.0.1:off-topic => yo
+[07-30-2024 19:17:39] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:27:16] COMMAND :: Networky:chat => +test beep.py
+
+```import discord
+
+from ..utils.discord.messages import *
+
+async def beep(message: discord.message):
+  await message.channel.send(message.content)```
+[07-30-2024 20:27:19] COMMAND :: Networky:chat => +beep
+[07-30-2024 20:34:04] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:43:02] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:43:37] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:46:58] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:48:25] MESSAGE :: Networky:chat => ```
+[07-30-2024 20:34:04] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:43:02] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:43:37] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 20:46:58] MESSAGE :: ArmoredVM:log => ```
+[07-30-2024 20:58:13] MESSAGE :: 127.0.0.1:off-topic => not done
+[07-30-2024 21:01:10] MESSAGE :: ArmoredVM:joins => 
+[07-30-2024 21:12:31] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:14:32] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:17:49] MESSAGE :: 127.0.0.1:off-topic => faggot
+[07-30-2024 21:18:03] MESSAGE :: 127.0.0.1:off-topic => jeffery know gay
+[07-30-2024 21:21:10] MESSAGE :: 127.0.0.1:off-topic => <:spongecryin:1246983177910620233>
+[07-30-2024 21:21:17] MESSAGE :: 127.0.0.1:off-topic => https://tenor.com/view/what-tate-power-seriously-gif-15179198
+[07-30-2024 21:21:35] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:21:38] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:23:22] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:23:32] COMMAND :: ArmoredVM:bots => +help
+[07-30-2024 21:25:40] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:30:38] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:31:10] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:32:05] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:35:56] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:37:04] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 21:39:07] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:04:41] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:05:00] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:05:36] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:05:37] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:06:44] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:10:16] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:11:59] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:13:32] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:14:20] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:14:31] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:14:33] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:17:43] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:18:59] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:19:37] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:19:59] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:21:31] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:23:24] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:30:20] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:32:23] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:37:50] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:38:16] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:48:43] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:49:16] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 22:54:14] MESSAGE :: ArmoredVM:community-support => Hi sir I would like to purchase <@1108018643251507340>
+[07-30-2024 22:54:43] MESSAGE :: ArmoredVM:community-support => https://tenor.com/view/trade-offer-gif-21546586
+[07-30-2024 22:59:37] MESSAGE :: ArmoredVM:log => 
+[07-30-2024 23:07:28] MESSAGE :: ArmoredVM:joins => 
+[07-30-2024 23:10:16] MESSAGE :: 127.0.0.1:moderator-only => which?
+[07-30-2024 23:11:02] MESSAGE :: 127.0.0.1:moderator-only => well I just got on, so hope you got a copy
+[07-30-2024 23:14:12] MESSAGE :: ArmoredVM:community-support => Purchase what buddy
+[07-30-2024 23:14:32] MESSAGE :: ArmoredVM:community-support => https://tenor.com/view/superstar-mahesh-babu-maharshi-mahesh-businessman-gif-12556301856267123191
+[07-30-2024 23:34:29] MESSAGE :: 127.0.0.1:moderator-only => that C something with a main?
+[07-30-2024 23:34:39] MESSAGE :: 127.0.0.1:moderator-only => c-monitor?
+[07-30-2024 23:36:01] MESSAGE :: 127.0.0.1:moderator-only => its doing some drawing with ncurses
+[07-30-2024 23:36:07] MESSAGE :: 127.0.0.1:moderator-only => and gets the information with this beauty
+[07-30-2024 23:36:09] MESSAGE :: 127.0.0.1:moderator-only => ```c
+popen("top -bn1 | grep \'Cpu(s)\' | sed \'s/.*, *\\([0-9.]*\\)%* id.*/\\1/\' | awk \'{p rint 100 - $1}\'"```
+[07-31-2024 00:10:36] MESSAGE :: ArmoredVM:log => 
+[07-31-2024 00:12:57] MESSAGE :: ArmoredVM:log => 
+[07-31-2024 00:20:16] COMMAND :: Networky:development => +test
+[07-31-2024 00:20:39] COMMAND :: Networky:development => +test I’m hexxer 1337 how dare you
+[07-31-2024 00:20:51] COMMAND :: Networky:development => +gay
+[07-31-2024 00:21:17] COMMAND :: Networky:development => +algoisgay
+[07-31-2024 00:23:13] MESSAGE :: Networky:development => https://cdn.discordapp.com/attachments/1261295511734976573/1261305000823357510/nigggggggggggg.gif
+[07-31-2024 00:25:09] MESSAGE :: ArmoredVM:log => 
+[07-31-2024 01:22:00] MESSAGE :: 127.0.0.1:moderator-only => <@1263789141955579997>
+[07-31-2024 01:22:43] COMMAND :: 127.0.0.1:moderator-only => +vcmuteall
+[07-31-2024 01:32:52] MESSAGE :: Networky:commits => 
+[07-31-2024 01:33:26] MESSAGE :: Networky:chat => <@1263789141955579997> reload bot dummy
+[07-31-2024 01:48:42] MESSAGE :: 127.0.0.1:moderator-only => 
+[07-31-2024 04:14:53] MESSAGE :: Networky:chat => done
+[07-31-2024 04:46:27] COMMAND :: Networky:chat => +vcmuteall
+[07-31-2024 04:46:37] MESSAGE :: Networky:chat => I didn’t push fuck lmao n I got off
+[07-31-2024 04:46:55] MESSAGE :: Networky:chat => <@1235776145819959318> <@1263789141955579997> it should be done tho. For some I didn’t do all
+[07-31-2024 04:47:00] MESSAGE :: Networky:chat => bruh what
+[07-31-2024 04:47:07] MESSAGE :: Networky:chat => turn that shit back on
+[07-31-2024 04:47:16] MESSAGE :: Networky:chat => It’s on
+[07-31-2024 04:47:20] MESSAGE :: Networky:chat => why dnt u communicate when ur on and working on shit
+[07-31-2024 04:47:23] MESSAGE :: Networky:chat => push update nigga
+[07-31-2024 04:47:59] MESSAGE :: Networky:chat => I pushed it
+[07-31-2024 04:48:04] COMMAND :: Networky:chat => +nuke
+[07-31-2024 04:48:04] MESSAGE :: Networky:chat => no u didnt
+[07-31-2024 04:48:13] MESSAGE :: Networky:chat => no u didnt
+[07-31-2024 04:48:16] MESSAGE :: Networky:chat => u pushed one like 3 hrs ago
+[07-31-2024 04:48:21] MESSAGE :: Networky:chat => Look at <#1257680744248250379>
+[07-31-2024 04:48:26] MESSAGE :: Networky:chat => That’s when I was on nigga
+[07-31-2024 04:48:30] MESSAGE :: Networky:chat => brrr
+[07-31-2024 04:49:00] COMMAND :: Networky:chat => +mute <@1219343171608252426>
+[07-31-2024 04:49:26] COMMAND :: Networky:chat => +vcmuteall
+[07-31-2024 04:49:45] MESSAGE :: Networky:chat => https://puu.sh/Kc1d4/a63accb078.png
+[07-31-2024 04:50:14] MESSAGE :: Networky:chat => Ok send that to me brother. Because when I tested on my end it worked
+[07-31-2024 04:50:23] MESSAGE :: Networky:chat => when are you gonna realize commands.bot DISCORD BOTS are the same as DISCORD.CLIENT
+[07-31-2024 04:50:35] MESSAGE :: Networky:chat => 
+[07-31-2024 04:51:08] MESSAGE :: Networky:chat => That’s what I have for mine now it works fine. So idk why it’s bugging.
+[07-31-2024 04:51:54] MESSAGE :: 127.0.0.1:moderator-only => <@1263789141955579997> this the same way I did the other shit
+[07-31-2024 04:52:25] MESSAGE :: Networky:chat => What does it say when you nuke?
+[07-31-2024 04:52:33] COMMAND :: Networky:chat => +nuke
+[07-31-2024 04:52:38] MESSAGE :: Networky:chat => it works
+[07-31-2024 04:52:40] MESSAGE :: Networky:chat => See
+[07-31-2024 04:52:41] MESSAGE :: Networky:chat => the other one dont
+[07-31-2024 04:53:09] MESSAGE :: Networky:chat => I’ll fix it in a little I get off here soon

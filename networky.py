@@ -34,7 +34,7 @@ class Networky(discord.Client, DiscordCogs):
         if msg_data.cmd == "+test":
             return await self.ExcuteTestCmd(message)
         
-        if not await self.ExecuteCmd(msg_data.args[0].replace(Config.prefix, ""), message):
+        if not await self.ExecuteCmd(msg_data.cmd.replace(Config.prefix, ""), message):
             return await message.channel.send("Failed to find command or corrupted Lib()")
     
     async def on_voice_state_update(self, member, before, after):

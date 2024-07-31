@@ -4,7 +4,6 @@ from ..cogs import *
 from ..utils.discord.messages import *
 
 async def test(message: discord.message, lib: DiscordCogs):
-
     chk = await is_author_dev(message.author.roles)
     if f"{message.author.id}" != "1235776145819959318" and not chk:
         return await message.channel.send("[ X ] Error, You cannot use...!")
@@ -13,10 +12,10 @@ async def test(message: discord.message, lib: DiscordCogs):
         return await message.channel.reply("[ X ] Error, Wrong server to use this command")
 
     msg = Message(message)
-    data = msg.data.replace(msg.args[0], "").replace(msg.args[1].split("\n")[0], "").replace("`", "")
-    
     if not "```" in msg.data:
         await message.reply("[ X ] Error, Missing code snippet....!")
+
+    data = msg.data.replace(msg.args[0], "").replace(msg.args[1].split("\n")[0], "").replace("`", "")
     
     add_new_cmd(lib, msg.args[1].split('\n')[0], data)
 

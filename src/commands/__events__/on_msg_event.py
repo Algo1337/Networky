@@ -1,5 +1,6 @@
-import discord, requests, validators, subprocess, datetime
+import discord, requests, validators, subprocess
 
+from datetime import datetime
 from discord import message, Embed
 
 from ...utils.discord.messages import *
@@ -21,7 +22,7 @@ async def on_msg_event(message: discord.message) -> bool:
     else:
         logging("MESSAGE", message);
     
-    print(f'[ + ] Message from {message.author}: {message.content}')
+    print(f'[ + ] {message.guild.name}:{message.channel.name} => {message.content}')
 
 async def geo(message: discord.message, element: str):
     req = requests.get(f"https://ipwho.is/{element}")

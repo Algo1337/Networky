@@ -1,7 +1,6 @@
 import discord
 
 from ...utils.discord.messages import *
-from discord.ext import commands, voice_recv
 
 async def purge(message: discord.message) -> bool:
     msg = Message(message)
