@@ -38,14 +38,8 @@ class Networky(discord.Client, DiscordCogs):
             return await message.channel.send("Failed to find command or corrupted Lib()")
     
     async def on_voice_state_update(self, member, before, after):
-        # if before.channel != after.channel:
-        #     # Check if the member joined or left a voice channel
-        #     if after.channel:
-        #         print(f'{member} joined voice channel {after.channel.name}.')
-        #     elif before.channel:
-        #         print(f'{member} left voice channel {before.channel.name}.')
-        await self.ExecuteVcModerator("on_vc_event", member, before, after)
-        # pass
+        if "on_vc_event" in self.commands:
+            await self.ExecuteVcModerator("on_vc_event", member, before, after)
 
 c = DiscordCogs("src/commands/")
 intents = discord.Intents.default()
