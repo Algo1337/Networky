@@ -118,7 +118,6 @@ class DiscordCogs():
         await method(message, self);
         return True;
 
-    
     def _DetectChanges(self) -> None:
         print("[ + ] Detecting commands for new changes for runtime reloading....")
         while True:
