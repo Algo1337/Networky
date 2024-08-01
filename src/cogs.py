@@ -31,7 +31,10 @@ class DiscordCogs():
         self._loadCmds();
 
         if not self.LoadMessageModerator():
-            print("[ x ] No message_watch found....!")
+            print("[ x ] No on_msg_event found....!")
+
+        if not self.LoadVCModeration():
+            print("[ x ] No on_vc_event found...!")
 
         threading.Thread(target=self._DetectChanges).start()
 
@@ -82,13 +85,13 @@ class DiscordCogs():
     
     async def ExecuteMsgModerator(self, event_name: str, message: discord.message) -> bool:
         if not event_name in __EVENTS_METHODS__: return False
-        method = getattr(self.commands[event_name].lib, "on_msg_event")
+        method = getattr(self.commands["on_msg_event"].lib, "on_msg_event")
         await method(message)
         return True
     
-    async def ExecuteVcModerator(self, event_name: str, member, before, after) -> bool:
+    async def ExecuteVcModerator(self, event_name: str, member, before = None, after = None) -> bool:
         if not event_name in __EVENTS_METHODS__: return False
-        method = getattr(self.commands[event_name].lib, "on_vc_event")
+        method = getattr(self.commands["on_vc_event"].lib, "on_vc_event")
         await method(member, before, after)
         return False
 

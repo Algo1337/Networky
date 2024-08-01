@@ -15,10 +15,6 @@ async def nuke(message: discord.Message):
 
     await new_channel.edit(position=channel.position)
 
-    embed = discord.Embed(
-        title="🚨 Attention 🚨",
-        description="HOLY SHIT, WE JUST GOT FUCKING HACKED",
-        color=discord.Color.red()
-    )
+    embed = discord.Embed( title = "🚨 Triggered 🚨", description = "HOLY SHIT, WE JUST GOT FUCKING HACKED", color = discord.Color.red() )
 
     await new_channel.send(embed=embed)

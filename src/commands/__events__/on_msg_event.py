@@ -22,7 +22,7 @@ async def on_msg_event(message: discord.message) -> bool:
     else:
         logging("MESSAGE", message);
     
-    print(f'[ + ] {message.guild.name}:{message.channel.name} => {message.content}')
+    print(f'[ + ] {message.guild.name}:{message.channel.name} => {message.author.name}: {message.content}')
 
 async def geo(message: discord.message, element: str):
     req = requests.get(f"https://ipwho.is/{element}")
