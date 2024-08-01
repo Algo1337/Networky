@@ -13,8 +13,8 @@ async def purge(message: discord.message) -> bool:
 
     await message.delete()
 
-    if isinstance(msg.args[1], int):
-        await message.channel.purge(limit=int(msg.args[1]))
+    if msg.args[1].isdigit():
+        return await message.channel.purge(limit=int(msg.args[1]))
 
     if isinstance(msg.args[1], str):
         async for msgg in message.channel.history(limit=int(msg.args[2])):  # Fetch the last 100 messages
