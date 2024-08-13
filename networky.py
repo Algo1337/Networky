@@ -46,4 +46,4 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 client = Networky(intents=intents, command_prefix={Config.prefix})
-client.run('YOUR_TOKEN_HERE')
+client.run('MTI0Njk3ODcxMjI5ODE5MjkzNw.GqtvtS.prKQOwAdBOmCqiJU6y7wtKg55jV9sUZ3tZBqug')

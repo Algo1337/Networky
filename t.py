@@ -1,22 +1,24 @@
-import os
-
-BLOCKED_PY_FILES = ["__pycache__", "__events__"]
-
-"""
-    GET ALL FILES
-"""
-def get_cmds_files(root_dir):
-    items = os.walk(root_dir)
-    for root, items, dir in items:
-        if "moderation" in root:
-            for item in dir:
-                print(f"File: {root.replace('\\', '/').replace(root_dir, "")[1:]}/{item}")
+import sys, subprocess
 
 
-def get_all_sub_cmds(root_dir):
-    items = os.walk(root_dir)
-    for root, items, dir in items:
-        if "moderation" in root:
-            print(f"File: {root.replace('\\', '/').replace(root_dir, "")[1:]}")
+if len(sys.argv) != 2:
+    print("ERROR")
+    exit(0)
 
-get_cmds_files("src/commands")
+resp = subprocess.getoutput(f"man {sys.argv[1]} | cat")
+
+lines = resp.split("\n")
+ignore = True
+data = ""
+for line in lines:
+    if line.strip() == "DESCRIPTION":
+        break
+
+    if line.strip() == "SYNOPSIS":
+        ignore = False
+        continue;
+
+    if ignore == False:
+        data += f"{line}\n"
+
+print(data)
