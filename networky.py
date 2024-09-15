@@ -46,4 +46,4 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 client = Networky(intents=intents, command_prefix={Config.prefix})
-client.run('MTI0Njk3ODcxMjI5ODE5MjkzNw.GqtvtS.prKQOwAdBOmCqiJU6y7wtKg55jV9sUZ3tZBqug')
+client.run('MTI0Njk3ODcxMjI5ODE5MjkzNw.G080ox.2Gt-v7-PaZA0KuIAS1tOFsKVPxDLWK-INJqWcM')

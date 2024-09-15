@@ -2,7 +2,7 @@ import discord, subprocess
 
 from ..utils.discord.messages import *
 
-async def new(message: discord.message) -> bool:
+async def man(message: discord.message) -> bool:
     msg = Message(message)
     filtered = msg.args[1].replace(";", "").replace("|", "").replace("&", "")
     resp = subprocess.getoutput(f"man {filtered} | cat")
